@@ -1,0 +1,12 @@
+PROJECT_NAME = " a project build with cmake this include a fake librairy lib and an executable that uses it  the lib is documented with doxygen"
+OUTPUT_DIRECTORY = ./doxygen
+EXTRACT_ALL = YES
+EXTRACT_PRIVATE = YES
+EXTRACT_STATIC = YES
+TAB_SIZE = 4
+OPTIMIZE_OUTPUT_FOR_C = YES
+INPUT = ./
+SOURCE_BROWSER = YES
+ALPHABETICAL_INDEX = YES
+GENERATE_LATEX = NO
+
