@@ -33,8 +33,8 @@ void Model::notifyObservers()
     *listMyClassIter(_bpm);
     */
     auto m=_bpm;
-    std::for_each(  Observers.begin(), Observers.end(), [m](pBaseObserver  &n) {
-        /* calling   BaseObserver::operator()(int bpm) operator ()(_bpm) to each observer n while using regular ptr was done as  *n(m); */ n->(m);
+    std::for_each(  Observers.begin(), Observers.end(), [m](pBaseObserver n) {
+        n->operator()(m);
     });
     /* matthew
     for (const auto& observer : bpmObservers)
@@ -58,12 +58,10 @@ int main()
     std::unique_ptr<DerivedObserver> derived = std::make_unique<DerivedObserver>();/* a sub class object*/
     derived->setValue(5);
     std::cout<<"after derived->setValue(5);new is: "<<derived->getValue() << std::endl;
-    pBaseObserver base(std::move(derived));
-    base->setValue(6);
-    base->addValue(666);
-    std::cout<<"after base ->setValue(6)& addvalue(666);"<<base->getValue() << std::endl;
+    derived->setValue(6);
+    derived->addValue(666);
+    std::cout<<"after base ->setValue(6)& addvalue(666);"<<derived->getValue() << std::endl;
     std::unique_ptr<Model> amodel=std::make_unique<Model>();
-    amodel->registerObserver(std::move(base));
-    amodel->registerObserver(std::move(derived));
+    amodel->registerObserver(derived.release());
     return 0;
 }

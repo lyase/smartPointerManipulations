@@ -14,10 +14,10 @@ class DerivedObserver :public BaseObserver {
 public:
     ~DerivedObserver() {}
     int WidgetValue;
-    int getValue(void);
+    int getValue(void) override;
     virtual void addValue(int i )override ;
-    virtual void setBPM(int bpm);
-    virtual void operator()(int bpm) {};
+    virtual void setBPM(int bpm) override;
+    virtual void operator()(int bpm) override {};
 private:
 };
 #ifdef HAVE_CPP11
