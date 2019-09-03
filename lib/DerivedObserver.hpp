@@ -16,7 +16,7 @@ public:
     int WidgetValue;
     int getValue(void) override;
     virtual void addValue(int i )override ;
-    virtual void setBPM(int bpm) override;
+    virtual void setBPM(int bpm) override {};
     virtual void operator()(int bpm) override {};
 private:
 };
